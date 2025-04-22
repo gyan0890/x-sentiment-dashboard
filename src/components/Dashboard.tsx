@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   PieChart, Pie, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend,
 } from 'recharts';
@@ -140,7 +140,7 @@ const Dashboard = () => {
                       dataKey="value"
                       label
                     >
-                      {parseSummary(result.summary).map((entry, i) => (
+                      {parseSummary(result.summary).map((_, i) => (
                         <Cell key={`cell-${i}`} fill={COLORS[i % COLORS.length]} />
                       ))}
                     </Pie>
