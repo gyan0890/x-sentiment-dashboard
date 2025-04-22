@@ -22,7 +22,7 @@ const Dashboard = () => {
   const fetchData = async () => {
     if (handles.length === 0) return;
     setLoading(true);
-    const res = await fetch('http://localhost:5000/api/analyze', {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/analyze`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ handles }),
