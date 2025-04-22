@@ -1,0 +1,99 @@
+  .container {
+    padding: 2rem;
+    font-family: sans-serif;
+    width: 100%;
+    max-width: 1827px;
+    margin: 0 auto;
+    background: url('/layered-waves-haikei.png') no-repeat center center;
+    background-size: cover;
+    width: 100vw;               /* force full viewport width */
+    min-height: 100vh;
+}
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #222; /* <-- Dark color to ensure visibility */
+  }
+
+  .inputGroup {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex: 1;
+  }
+  
+  .chartsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+  
+  .card {
+    padding: 1rem;
+    border-radius: 10px;
+    background: #f8f9fa;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .button {
+    padding: 0.75rem 1rem;
+    background-color: #8884d8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .resultsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .chartSection {
+    margin: 2rem 0;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .tweetList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .tweetCard {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    border-left: 6px solid #ccc;
+  }
+  
+  pre {
+    font-family: monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    overflow-x: auto;
+  }
+
+ 
+  
+  
