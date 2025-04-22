@@ -43,7 +43,11 @@ const Dashboard = () => {
     return Object.entries(sentimentCounts).map(([name, value]) => ({ name, value }));
   };
 
-  const extractSentimentPerTweet = (summary: string) => {
+  const extractSentimentPerTweet = (summary: string | undefined) => {
+    if (!summary || typeof summary !== "string") {
+      return []; // fallback when summary is missing
+    }
+  
     const tweetBlocks = summary.split(/\n(?=\d+\. )/g);
     const result = tweetBlocks.map((block) => {
       const sentimentMatch = block.match(/Sentiment:\s*(Positive|Neutral|Negative)/i);
@@ -53,8 +57,10 @@ const Dashboard = () => {
         topic: topicMatch ? topicMatch[1].trim() : 'Unknown',
       };
     });
+  
     return result;
   };
+  
   
 
   const getBarChartData = () => {
