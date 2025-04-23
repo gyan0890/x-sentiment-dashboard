@@ -85,6 +85,26 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     border-left: 6px solid #ccc;
   }
+
+  .tweetTime {
+    color: #888;
+    font-size: 12px;
+    margin-top: 8px;
+  }  
+
+  .metrics {
+    font-size: 12px;
+    color: #666;
+    margin-top: 6px;
+  }
+  
+  .commentsBox {
+    background-color: #f7f7f7;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-top: 10px;
+  }
   
   pre {
     font-family: monospace;

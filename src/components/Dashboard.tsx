@@ -5,6 +5,15 @@ import {
 import styles from './Dashboard.module.css';
 
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658'];
+type Tweet = {
+  content: string;
+  timestamp?: string;
+  likes?: number;
+  replies?: number;
+  quotes?: number;
+  bookmarks?: number;
+  comments?: string[];
+};
 
 const Dashboard = () => {
   const [input, setInput] = useState('');
@@ -47,7 +56,7 @@ const Dashboard = () => {
     if (!summary || typeof summary !== "string") {
       return []; // fallback when summary is missing
     }
-  
+
     const tweetBlocks = summary.split(/\n(?=\d+\. )/g);
     const result = tweetBlocks.map((block) => {
       const sentimentMatch = block.match(/Sentiment:\s*(Positive|Neutral|Negative)/i);
@@ -57,11 +66,9 @@ const Dashboard = () => {
         topic: topicMatch ? topicMatch[1].trim() : 'Unknown',
       };
     });
-  
+
     return result;
   };
-  
-  
 
   const getBarChartData = () => {
     return results.map((result) => {
@@ -155,7 +162,7 @@ const Dashboard = () => {
 
                   <h3>Tweets</h3>
                   <div className={styles.tweetList}>
-                    {result.tweets?.map((tweet: string, i: number) => (
+                    {result.tweets?.map((tweet: Tweet, i: number) => (
                       <div
                         key={i}
                         className={styles.tweetCard}
@@ -163,7 +170,28 @@ const Dashboard = () => {
                       >
                         <p><strong>Sentiment:</strong> {tweetSentiments[i]?.sentiment || 'Unknown'}</p>
                         <p><strong>Topic:</strong> {tweetSentiments[i]?.topic || 'Unknown'}</p>
-                        <p>{tweet}</p>
+                        <p>{tweet.content}</p>
+                        {tweet.timestamp && (
+                          <p className={styles.tweetTime}>
+                            <small>🕒 {new Date(tweet.timestamp).toLocaleString()}</small>
+                          </p>
+                        )}
+                        <div className={styles.metrics}>
+                          <p>👍 Likes: {tweet.likes ?? 0}</p>
+                          <p>💬 Replies: {tweet.replies ?? 0}</p>
+                          <p>🔁 Quotes: {tweet.quotes ?? 0}</p>
+                          <p>🔖 Bookmarks: {tweet.bookmarks ?? 0}</p>
+                        </div>
+                        {Array.isArray(tweet.comments) && tweet.comments.length > 0 && (
+                          <div className={styles.commentsBox}>
+                            <strong>Top Comments:</strong>
+                            <ul>
+                              {tweet.comments.slice(0, 3).map((c, j) => (
+                                <li key={j}>• {c}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
